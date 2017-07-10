@@ -11,14 +11,13 @@ class WebuntisCli:
             password=untis_pass,
             server=server,
             school=school,
-            useragent="webuntis_cli"
-        )
+            useragent="webuntis_cli")
         self.session.login()
 
     def run(self):
-        self.parsing_args()
+        self._parsing_args()
 
-    def parsing_args(self):
+    def _parsing_args(self):
         logging.debug("parsing arguments")
         parser = argparse.ArgumentParser()
         parser.add_argument("--lehrer",
@@ -31,15 +30,21 @@ class WebuntisCli:
         args = parser.parse_args()
 
         logging.debug("arguments: %s", args)
-        if parser.lehrer is not None:
-            pass
-        elif parser.klasse is not None:
-            pass
-        elif parser.raum is not None:
-            pass
-        else:
-            logging.error("No option given!")
-            assert raise Exception("No Option given!")
+        if args.lehrer is not None:
+            self._handle_lehrer(args.lehrer)
+        if args.klasse is not None:
+            self._handle_klasse(args.klasse)
+        if args.raum is not None:
+            self._handle_raum(args.raum)
+
+    def _handle_lehrer(self, kuerzel: str):
+        logging.debug("handling lehrer %s", kuerzel)
+
+    def _handle_klasse(self, klassenname: str):
+        logging.debug("handling klasse %s", klassenname)
+
+    def _handle_raum(self, raumname: str):
+        logging.debug("handling raum %s", raumname)
 
 
 def main():
@@ -50,7 +55,7 @@ def main():
 
     wcli = WebuntisCli(cred['user'], cred['password'],
                        cred['server'], cred['school'])
-    wcli.parsing_args()
+    wcli.run()
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG)
