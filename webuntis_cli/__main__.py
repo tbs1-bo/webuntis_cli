@@ -127,8 +127,9 @@ class WebuntisCli:
             k = " ".join([k.name for k in po.klassen])
             t = " ".join([t.name for t in po.teachers])
             r = " ".join([r.name for r in po.rooms])
+            sub = " ".join([r.name for r in po.subjects])
             c = po.code if po.code is not None else ""
-            print(s, e, k, t, r, c)
+            print(s, e, k, sub, t, r, c)
 
 
 def main():
