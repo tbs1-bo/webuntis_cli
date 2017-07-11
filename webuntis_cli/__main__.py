@@ -21,9 +21,9 @@ class WebuntisCli:
         self.session.login()
 
     def run(self):
-        self._parsing_args()
+        self._parse_args()
 
-    def _parsing_args(self):
+    def _create_parser(self):
         logging.debug("parsing arguments")
         parser = argparse.ArgumentParser()
         parser.description = "Kommandozeilen-Client für WebUntis."
@@ -36,6 +36,10 @@ class WebuntisCli:
         parser.add_argument("--tage", type=int,
                             default=5,
                             help="Anzahl Tage für den Plan (Standard: 5)")
+        return parser
+
+    def _parse_args(self):
+        parser = self._create_parser()
 
         args = parser.parse_args()
         self.days = args.tage - 1
@@ -90,6 +94,7 @@ class WebuntisCli:
         :param reference: teacher, klasse or room object"""
         start = datetime.datetime.now()
         end = start + datetime.timedelta(days=self.days)
+
         if isinstance(reference, webuntis.objects.TeacherObject):
             logging.debug("Creating time table for teacher from % til %s",
                           reference, start, end)
