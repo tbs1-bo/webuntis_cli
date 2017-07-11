@@ -19,6 +19,7 @@ class WebuntisCli:
             useragent="webuntis_cli")
         self.days = 5
         self.session.login()
+        self.start = datetime.datetime.now()
 
     def run(self):
         self._parse_args()
@@ -28,21 +29,26 @@ class WebuntisCli:
         parser = argparse.ArgumentParser()
         parser.description = "Kommandozeilen-Client für WebUntis."
         parser.add_argument("--lehrer", nargs='*',
-                            help="Lehrerkürzel")
+                            help="Einer oder mehrere Nachnamen von Lehrern")
         parser.add_argument("--klasse", nargs='*',
-                            help="Klassenbezeichnung")
+                            help="Ein oder mehrere Klassenbezeichnungen")
         parser.add_argument("--raum", nargs='*',
-                            help="Raumbezeichnung")
+                            help="Ein oder mehrere Raumbezeichnungen")
         parser.add_argument("--tage", type=int,
                             default=5,
                             help="Anzahl Tage für den Plan (Standard: 5)")
+        parser.add_argument("--start",
+                            help="Startdatum des Planes im Format 02.12. (Standard: heute)")
+
         return parser
 
     def _parse_args(self):
         parser = self._create_parser()
-
         args = parser.parse_args()
         self.days = args.tage - 1
+
+        if args.start:
+            self.start = datetime.datetime.strptime(args.start, "%d.%m.")
 
         logging.debug("arguments: %s", args)
         if args.lehrer is not None:
@@ -93,11 +99,11 @@ class WebuntisCli:
 
         :param reference: teacher, klasse or room object"""
         start = datetime.datetime.now()
+        start = start.replace(day=self.start.day, month=self.start.month)
         end = start + datetime.timedelta(days=self.days)
+        logging.debug("time table from %s to %s", start, end)
 
         if isinstance(reference, webuntis.objects.TeacherObject):
-            logging.debug("Creating time table for teacher from % til %s",
-                          reference, start, end)
             return self.session.timetable(start=start, end=end,
                                           teacher=reference)
         elif isinstance(reference, webuntis.objects.KlassenObject):
@@ -113,7 +119,8 @@ class WebuntisCli:
         tt = sorted(tt, key=lambda x: x.start)
         logging.debug("printing timetable")
         time_format_end = "%H:%M"
-        time_format_start = "%a " + time_format_end
+        time_format_start = "%Y-%m-%d %a " + time_format_end
+
         for po in tt:
             s = po.start.strftime(time_format_start)
             e = po.end.strftime(time_format_end)
@@ -126,7 +133,6 @@ class WebuntisCli:
 def main():
     # setting locale to the default language
     locale.setlocale(locale.LC_ALL, '')
-
 
     logging.debug("Reading config file")
     config = configparser.ConfigParser()
