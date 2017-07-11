@@ -26,6 +26,7 @@ class WebuntisCli:
     def _parsing_args(self):
         logging.debug("parsing arguments")
         parser = argparse.ArgumentParser()
+        parser.description = "Kommandozeilen-Client für WebUntis."
         parser.add_argument("--lehrer",
                             help="Lehrerkürzel")
         parser.add_argument("--klasse",
