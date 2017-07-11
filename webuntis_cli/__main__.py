@@ -5,6 +5,7 @@ import webuntis
 import webuntis.objects
 import configparser
 import datetime
+import locale
 
 
 class WebuntisCli:
@@ -95,10 +96,11 @@ class WebuntisCli:
         tt = list(timetable)
         tt = sorted(tt, key=lambda x: x.start)
         logging.debug("printing timetable")
-        time_format = "%H:%M"
+        time_format_end = "%H:%M"
+        time_format_start = "%a " + time_format_end
         for po in tt:
-            s = po.start.strftime(time_format)
-            e = po.end.strftime(time_format)
+            s = po.start.strftime(time_format_start)
+            e = po.end.strftime(time_format_end)
             k = " ".join([k.name for k in po.klassen])
             t = " ".join([t.name for t in po.teachers])
             r = " ".join([r.name for r in po.rooms])
@@ -106,6 +108,10 @@ class WebuntisCli:
 
 
 def main():
+    # setting locale to the default language
+    locale.setlocale(locale.LC_ALL, '')
+
+
     logging.debug("Reading config file")
     config = configparser.ConfigParser()
     config.read("config.ini")
