@@ -32,8 +32,12 @@ class WebuntisCli:
                             help="Klassenbezeichnung")
         parser.add_argument("--raum",
                             help="Raumbezeichnung")
+        parser.add_argument("--tage", type=int,
+                            default=5,
+                            help="Anzahl Tage für den Plan (Standard: 5)")
 
         args = parser.parse_args()
+        self.days = args.tage - 1
 
         logging.debug("arguments: %s", args)
         if args.lehrer is not None:
