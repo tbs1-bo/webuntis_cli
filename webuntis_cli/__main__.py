@@ -1,6 +1,7 @@
 import argparse
 import logging
 import webuntis
+# Doc: https://python-webuntis.readthedocs.io/en/latest/objects.html
 import webuntis.objects
 import configparser
 import datetime
