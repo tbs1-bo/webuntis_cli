@@ -27,11 +27,11 @@ class WebuntisCli:
         logging.debug("parsing arguments")
         parser = argparse.ArgumentParser()
         parser.description = "Kommandozeilen-Client für WebUntis."
-        parser.add_argument("--lehrer",
+        parser.add_argument("--lehrer", nargs='*',
                             help="Lehrerkürzel")
-        parser.add_argument("--klasse",
+        parser.add_argument("--klasse", nargs='*',
                             help="Klassenbezeichnung")
-        parser.add_argument("--raum",
+        parser.add_argument("--raum", nargs='*',
                             help="Raumbezeichnung")
         parser.add_argument("--tage", type=int,
                             default=5,
@@ -42,11 +42,17 @@ class WebuntisCli:
 
         logging.debug("arguments: %s", args)
         if args.lehrer is not None:
-            self._handle_lehrer(args.lehrer)
+            for l in args.lehrer:
+                self._handle_lehrer(l)
+                print()
         if args.klasse is not None:
-            self._handle_klasse(args.klasse)
+            for k in args.klasse:
+                self._handle_klasse(k)
+                print()
         if args.raum is not None:
-            self._handle_raum(args.raum)
+            for r in args.raum:
+                self._handle_raum(r)
+                print()
 
     def _handle_lehrer(self, surname: str):
         logging.debug("handling lehrer %s", surname)
@@ -62,7 +68,7 @@ class WebuntisCli:
         logging.debug("handling klasse %s", klassenname)
         klassen = self.session.klassen().filter(name=klassenname)
         if len(klassen) != 1:
-            print("KLasse nicht gefunden", klassenname)
+            print("Klasse nicht gefunden", klassenname)
             return
         tt = self._create_timetable(klassen[0])
         self._print_timetable(tt)
@@ -127,5 +133,5 @@ def main():
     wcli.run()
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(level=logging.INFO)
     main()
