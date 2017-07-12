@@ -53,4 +53,5 @@ Probleme oder Fehler
 -------------------
 
 Wenn dir ein Fehler auffällt, so kannst du ihn einfach über den [Bugtracker bei
-github](https://github.com/tbs1-bo/webuntis_cli/issues/new) melden.
+github](https://github.com/tbs1-bo/webuntis_cli/issues/new) melden. Hierfür 
+benötigst du einen einen Account bei github.
