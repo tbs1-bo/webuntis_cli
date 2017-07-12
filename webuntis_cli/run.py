@@ -3,6 +3,7 @@ import logging
 import webuntis
 # Doc: https://python-webuntis.readthedocs.io/en/latest/objects.html
 import webuntis.objects
+import webuntis_cli
 import configparser
 import datetime
 import locale
@@ -29,7 +30,8 @@ class WebuntisCli:
     def _create_parser(self):
         logging.debug("parsing arguments")
         parser = argparse.ArgumentParser()
-        parser.description = "Kommandozeilen-Client für WebUntis."
+        parser.description = "Kommandozeilen-Client für WebUntis. Version " + \
+                             webuntis_cli.VERSION
         parser.add_argument("--lehrer", "-l", nargs='*',
                             help="Ein oder mehrere Nachnamen von Lehrern")
         parser.add_argument("--klasse", "-k", nargs='*',
