@@ -4,6 +4,7 @@ Webuntis CLI
 Eine Kommandozeile für WebUntis - eine Software zum Erstellen und Verwalten von
 Stundenplänen in Schulen.
 
+
 Installation/Upgrade
 --------------------
 
@@ -17,6 +18,7 @@ Dann erfolgt die Installation über eine Konsole:
 Mit der Option `--upgrade` wird die immer jeweils aktuellste Version 
 installiert. 
 
+
 Benutzung
 ---------
 
@@ -29,3 +31,10 @@ Nach dem ersten Aufruf wird eine Konfigurationsdatei angelegt
 `.webuntis-cli.ini` im Home-Verzeichnis des Nutzers angelegt. Diese muss 
 bearbeitet und mit den korrekten Nutzerdaten wie Schulname, Server, 
 Benutzername und Passwort befüllt werden.
+
+
+Problem oder Fehler
+-------------------
+
+Wenn dir ein Fehler auffällt, so kannst du ihn einfach über den [Bugtracker bei
+github](https://github.com/tbs1-bo/webuntis_cli/issues/new) melden.
