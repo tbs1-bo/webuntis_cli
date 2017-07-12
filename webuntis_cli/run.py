@@ -6,6 +6,8 @@ import webuntis.objects
 import configparser
 import datetime
 import locale
+import os
+import stat
 
 
 class WebuntisCli:
@@ -132,19 +134,47 @@ class WebuntisCli:
             print(s, e, k, sub, t, r, c)
 
 
+class Configuration:
+    def __init__(self):
+        self.configfile = os.path.expanduser('~/.webuntis-cli.ini')
+        self.config = configparser.ConfigParser()
+
+    def create_default_if_missing(self):
+        if not os.path.isfile(self.configfile):
+            logging.debug("No config file found. Creating %s", self.configfile)
+            self.config['credentials'] = {
+                "user": "user",
+                "password": "123",
+                "server": "https: // server.webuntis.com",
+                "school": "your - school"
+            }
+            with open(self.configfile, 'w') as f:
+                self.config.write(f)
+
+            # change file permissions to 600
+            os.chmod(self.configfile, stat.S_IRUSR | stat.S_IWUSR)
+
+            print("Passe die Einträge in der Konfigurationsdatei an: ",
+                  self.configfile)
+            exit(0)
+
+        else:
+            self.config.read(self.configfile)
+
+
 def main():
     # setting locale to the default language
     locale.setlocale(locale.LC_ALL, '')
 
     logging.debug("Reading config file")
-    config = configparser.ConfigParser()
-    config.read("config.ini")
-    cred = config['credentials']
+    config = Configuration()
+    config.create_default_if_missing()
+    cred = config.config['credentials']
 
     wcli = WebuntisCli(cred['user'], cred['password'],
                        cred['server'], cred['school'])
     wcli.run()
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(level=logging.DEBUG)
     main()
