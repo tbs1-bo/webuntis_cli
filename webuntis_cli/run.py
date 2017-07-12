@@ -147,8 +147,8 @@ class Configuration:
             self.config['credentials'] = {
                 "user": "user",
                 "password": "123",
-                "server": "https: // server.webuntis.com",
-                "school": "your - school"
+                "server": "https://server.webuntis.com",
+                "school": "your-school"
             }
             with open(self.configfile, 'w') as f:
                 self.config.write(f)
