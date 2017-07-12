@@ -30,17 +30,17 @@ class WebuntisCli:
         logging.debug("parsing arguments")
         parser = argparse.ArgumentParser()
         parser.description = "Kommandozeilen-Client für WebUntis."
-        parser.add_argument("--lehrer", nargs='*',
-                            help="Einer oder mehrere Nachnamen von Lehrern")
-        parser.add_argument("--klasse", nargs='*',
+        parser.add_argument("--lehrer", "-l", nargs='*',
+                            help="Ein oder mehrere Nachnamen von Lehrern")
+        parser.add_argument("--klasse", "-k", nargs='*',
                             help="Ein oder mehrere Klassenbezeichnungen")
-        parser.add_argument("--raum", nargs='*',
+        parser.add_argument("--raum", "-r", nargs='*',
                             help="Ein oder mehrere Raumbezeichnungen")
-        parser.add_argument("--tage", type=int,
+        parser.add_argument("--tage", "-t", type=int,
                             default=5,
                             help="Anzahl Tage die, der Plan umfassen soll "
                                  "(Standard: 5)")
-        parser.add_argument("--start",
+        parser.add_argument("--start", "-s",
                             help="Startdatum des Planes im Format 02.12. "
                                  "(Standard: heute)")
 
