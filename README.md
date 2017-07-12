@@ -43,7 +43,7 @@ Es können auch mehrere Personen angegeben werden:
 
     $ webuntis-cli --lehrer Mustermann Musterfrau
     
-Ebeso können sie Pläne für verschiedene Räume oder Klassen angezeigt werden.
+Ebeso können die Pläne für verschiedene Räume oder Klassen angezeigt werden.
 
     $ webuntis-cli --raum 12 13 14
     $ webuntis-cli --klasse 10a 10b 10c
