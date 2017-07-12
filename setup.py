@@ -23,7 +23,7 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='0.3.3',
+    version='0.3.5',
 
     description='WebUntis CLI',
     # long_description=long_description,
@@ -37,7 +37,7 @@ setup(
     author_email='marco@bakera.de',
 
     # Choose your license
-    # license='MIT',
+    license='MIT',
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
@@ -45,10 +45,12 @@ setup(
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
 
         # Indicate who your project is intended for
+        'Environment :: Console',
         'Intended Audience :: Developers',
+        'Intended Audience :: Education',
         'Topic :: Education',
 
         # Pick your license as you wish (should match "license" above)
