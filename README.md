@@ -46,9 +46,9 @@ Ebeso können die Pläne für verschiedene Räume oder Klassen angezeigt werden.
     $ webuntis-cli --klasse 10a 10b 10c
 
 
-Probleme oder Fehler
-====================
+Probleme, Fehler oder Verbesserungsvorschläge
+=============================================
 
-Wenn dir ein Fehler auffällt, so kannst du ihn einfach über den [Bugtracker bei
+Fehler, Probleme oder Vorschläge für Verbesserungen kannst du über den [Bugtracker bei
 github](https://github.com/tbs1-bo/webuntis_cli/issues/new) melden. Hierfür 
 benötigst du einen einen Account bei github.
