@@ -27,13 +27,29 @@ Hilfefunktion.
 
     $ webuntis-cli --help
 
-Nach dem ersten Aufruf wird eine Konfigurationsdatei angelegt 
+Nach dem ersten Aufruf wird die Konfigurationsdatei  
 `.webuntis-cli.ini` im Home-Verzeichnis des Nutzers angelegt. Diese muss 
 bearbeitet und mit den korrekten Nutzerdaten wie Schulname, Server, 
 Benutzername und Passwort befüllt werden.
 
+### Beispiele
 
-Problem oder Fehler
+Ein Aufruf für den aktuellen Stundenplan von Herr Mustermann würde wie folgt
+aussehen:
+
+    $ webuntis-cli --lehrer Mustermann    
+
+Es können auch mehrere Personen angegeben werden:
+
+    $ webuntis-cli --lehrer Mustermann Musterfrau
+    
+Ebeso können sie Pläne für verschiedene Räume oder Klassen angezeigt werden.
+
+    $ webuntis-cli --raum 12 13 14
+    $ webuntis-cli --klasse 10a 10b 10c
+
+
+Probleme oder Fehler
 -------------------
 
 Wenn dir ein Fehler auffällt, so kannst du ihn einfach über den [Bugtracker bei
