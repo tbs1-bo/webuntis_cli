@@ -8,4 +8,4 @@ Basic Usage
 
 There is a help that knows how to use the tool.
 
-    $ python -m webuntis_cli --help
+    $ webuntis-cli --help
