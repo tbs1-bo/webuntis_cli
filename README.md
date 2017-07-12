@@ -1,6 +1,7 @@
-`webuntis-cli` stellt eine Kommandozeile für [WebUntis](https://www.untis.at)
-zur Verfügung. Bei Webuntis handelt es sich um eine Software zum Erstellen und 
-Verwalten von Stundenplänen in Schulen.
+Das Projekt `webuntis-cli` stellt eine Kommandozeile
+für [WebUntis](https://www.untis.at) zur Verfügung. Bei Webuntis
+handelt es sich um eine Software zum Erstellen und Verwalten von
+Stundenplänen in Schulen.
 
 
 Installation/Upgrade
