@@ -18,8 +18,8 @@ Mit der Option `--upgrade` wird immer die jeweils aktuelle Version installiert.
 Benutzung
 =========
 
-Das Programm wird mit `webuntis-cli` aufgerufen und verfügt über eine 
-Hilfefunktion.
+Nach der Installation steht der Befehl `webuntis-cli` zur Verfügung. Dieser 
+verfügt über eine Hilfefunktion.
 
     $ webuntis-cli --help
 
