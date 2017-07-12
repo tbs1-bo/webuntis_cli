@@ -3,6 +3,15 @@ Webuntis CLI
 
 A command line tool for Webuntis.
 
+Installation
+------------
+
+Use pip for a simple installation.
+
+    $ pip install -U webuntis-cli
+
+
+
 Basic Usage
 -----------
 
