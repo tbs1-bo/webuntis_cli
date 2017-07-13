@@ -31,8 +31,8 @@ class WebuntisCli:
     def _create_parser(self):
         logging.debug("parsing arguments")
         parser = argparse.ArgumentParser()
-        parser.description = "Kommandozeilen-Client für WebUntis. Version " + \
-                             webuntis_cli.VERSION
+        parser.epilog = "version " + webuntis_cli.VERSION
+        parser.description = "Kommandozeilen-Client für WebUntis"
         parser.add_argument("--lehrer", "-l", nargs='*',
                             help="Ein oder mehrere Nachnamen von Lehrern")
         parser.add_argument("--klasse", "-k", nargs='*',
