@@ -49,6 +49,14 @@ Ebeso können die Pläne für verschiedene Räume oder Klassen angezeigt werden.
     $ webuntis-cli --raum 12 13 14
     $ webuntis-cli --klasse 10a 10b 10c
 
+Der anzuzeigende Zeitraum kann über die folgenden Optionen festgelegt werden:
+
+- `--start` der erste Termin
+- `--tage` die Anzahl der angezeigten Tage
+
+
+    $ webuntis-cli --lehrer Mustermann --start 1.1. --tage 3
+
 
 Probleme, Fehler oder Verbesserungsvorschläge
 =============================================
