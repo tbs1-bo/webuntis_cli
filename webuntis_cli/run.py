@@ -52,6 +52,9 @@ class WebuntisCli:
     def _parse_args(self):
         parser = self._create_parser()
         args = parser.parse_args()
+        if self._no_command_selected(args):
+            parser.print_help()
+            return
         self.days = args.tage - 1
 
         if args.start:
@@ -70,6 +73,11 @@ class WebuntisCli:
             for r in args.raum:
                 self._handle_raum(r)
                 print()
+
+    def _no_command_selected(self, args):
+        return (args.lehrer is None and
+                args.klasse is None and
+                args.raum is None)
 
     def _handle_lehrer(self, surname: str):
         logging.debug("handling lehrer %s", surname)
