@@ -9,6 +9,7 @@ import datetime
 import locale
 import os
 import stat
+import getpass
 
 
 class WebuntisCli:
@@ -152,8 +153,14 @@ class Configuration:
     def __init__(self):
         self.configfile = os.path.expanduser('~/.webuntis-cli.ini')
         self.config = configparser.ConfigParser()
+        self._create_default_if_missing()
 
-    def create_default_if_missing(self):
+        if 'password' not in self.config['credentials']:
+            logging.debug("No password found in config file. Asking user")
+            self.config['credentials']['password'] = \
+                getpass.getpass("Passwort eingeben:")
+
+    def _create_default_if_missing(self):
         if not os.path.isfile(self.configfile):
             logging.debug("No config file found. Creating %s", self.configfile)
             self.config['credentials'] = {
@@ -182,7 +189,6 @@ def main():
 
     logging.debug("Reading config file")
     config = Configuration()
-    config.create_default_if_missing()
     cred = config.config['credentials']
 
     wcli = WebuntisCli(cred['user'], cred['password'],

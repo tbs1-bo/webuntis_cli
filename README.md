@@ -26,7 +26,11 @@ verfügt über eine Hilfefunktion.
 Nach dem ersten Aufruf wird die Konfigurationsdatei  `.webuntis-cli.ini` im 
 Home-Verzeichnis des Nutzers angelegt. Diese muss bearbeitet und mit den 
 korrekten Nutzerdaten wie Schulname, Server, Benutzername und Passwort befüllt 
-werden.
+werden. 
+
+Wenn das Speichern von Passwörtern in einer Datei unerwünscht ist, kann
+der Eintrag für das Passwort aus der Konfigurationsdatei entfernt werden. In 
+diesem Falle muss es bei jeder Ausführung eingegen werden.
 
 Beispiele
 ---------
