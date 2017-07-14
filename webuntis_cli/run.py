@@ -116,8 +116,12 @@ class WebuntisCli:
         start = datetime.datetime.now()
         start = start.replace(day=self.start.day, month=self.start.month)
         end = start + datetime.timedelta(days=self.days)
-        end = self._adjust_date_to_schoolyearend(end)
-        logging.debug("time table from %s to %s", start, end)
+        # If start date in current schoolyear => adjust enddate to be in
+        # current year as well
+        current_year = self.session.schoolyears().current
+        if current_year.start < start < current_year.end:
+            end = self._adjust_date_to_schoolyearend(end)
+        logging.debug("creating time table between %s and %s", start, end)
 
         if isinstance(reference, webuntis.objects.TeacherObject):
             return self.session.timetable(start=start, end=end,
@@ -145,7 +149,7 @@ class WebuntisCli:
             r = " ".join([r.name for r in po.rooms])
             sub = " ".join([r.name for r in po.subjects])
             c = po.code if po.code is not None else ""
-            print(s, e, k, sub, t, r, c)
+            print(s + "-" + e, k, sub, t, r, c)
 
     def _adjust_date_to_schoolyearend(self, date: datetime.datetime):
         current_year = self.session.schoolyears().current
