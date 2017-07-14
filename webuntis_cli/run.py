@@ -41,7 +41,7 @@ class WebuntisCli:
                             help="Ein oder mehrere Raumbezeichnungen")
         parser.add_argument("--tage", "-t", type=int,
                             default=5,
-                            help="Anzahl Tage die, der Plan umfassen soll "
+                            help="Anzahl Tage, die der Plan umfassen soll "
                                  "(Standard: 5)")
         parser.add_argument("--start", "-s",
                             help="Startdatum des Planes im Format 02.12. "
