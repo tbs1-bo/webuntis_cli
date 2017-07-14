@@ -64,3 +64,12 @@ Probleme, Fehler oder Verbesserungsvorschläge
 Fehler, Probleme oder Vorschläge für Verbesserungen kannst du über den [Bugtracker bei
 github](https://github.com/tbs1-bo/webuntis_cli/issues/new) melden. Hierfür 
 benötigst du einen einen Account bei github.
+
+Entwicklerdokumentation
+=======================
+
+Es können Debugausgaben aktiviert werden, indem die Umgebungsvariable 
+`WEBUNTIS_CLI_DEBUG` mit einem belibiegen Wert initialisiert wird.
+
+    $ WEBUNTIS_CLI_DEBUG=1 webuntis-cli --help
+    

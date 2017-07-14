@@ -195,6 +195,10 @@ def main():
     # setting locale to the default language
     locale.setlocale(locale.LC_ALL, '')
 
+    if 'WEBUNTIS_CLI_DEBUG' in os.environ:
+        logging.basicConfig(level=logging.DEBUG)
+        logging.debug("environment var found. enabling debugging")
+
     logging.debug("Reading config file")
     config = Configuration()
     cred = config.config['credentials']
