@@ -123,15 +123,15 @@ class WebuntisCli:
             end = self._adjust_date_to_schoolyearend(end)
         logging.debug("creating time table between %s and %s", start, end)
 
+        args = dict(start=start, end=end)
         if isinstance(reference, webuntis.objects.TeacherObject):
-            return self.session.timetable(start=start, end=end,
-                                          teacher=reference)
+            args['teacher'] = reference
         elif isinstance(reference, webuntis.objects.KlassenObject):
-            return self.session.timetable(start=start, end=end,
-                                          klasse=reference)
+            args['klasse'] = reference
         elif isinstance(reference, webuntis.objects.RoomObject):
-            return self.session.timetable(start=start, end=end,
-                                          room=reference)
+            args['room'] = reference
+
+        return self.session.timetable(**args)
 
     def _print_timetable(self, timetable: webuntis.objects.PeriodList):
         logging.debug("sorting time table by starting time")
