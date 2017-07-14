@@ -52,7 +52,7 @@ class WebuntisCli:
     def _parse_args(self):
         parser = self._create_parser()
         args = parser.parse_args()
-        if self._no_command_selected(args):
+        if self._required_option_missing(args):
             parser.print_help()
             return
         self.days = args.tage - 1
@@ -74,7 +74,7 @@ class WebuntisCli:
                 self._handle_raum(r)
                 print()
 
-    def _no_command_selected(self, args):
+    def _required_option_missing(self, args):
         return (args.lehrer is None and
                 args.klasse is None and
                 args.raum is None)
@@ -148,7 +148,7 @@ class WebuntisCli:
             t = " ".join([t.name for t in po.teachers])
             r = " ".join([r.name for r in po.rooms])
             sub = " ".join([r.name for r in po.subjects])
-            c = po.code if po.code is not None else ""
+            c = "(" + po.code + ")" if po.code is not None else ""
             print(s + "-" + e, k, sub, t, r, c)
 
     def _adjust_date_to_schoolyearend(self, date: datetime.datetime):
