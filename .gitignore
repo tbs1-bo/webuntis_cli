@@ -102,3 +102,6 @@ ENV/
 .idea
 
 config.ini
+.vscode/
+*~
+
