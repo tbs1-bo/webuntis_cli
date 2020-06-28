@@ -58,7 +58,8 @@ class WebuntisCli:
         self.days = args.tage - 1
 
         if args.start:
-            self.start = datetime.datetime.strptime(args.start, "%d.%m.")
+            start = datetime.datetime.strptime(args.start, "%d.%m.")
+            self.start = start.replace(year = datetime.datetime.now().year)
 
         logging.debug("arguments: %s", args)
         if args.lehrer is not None:
