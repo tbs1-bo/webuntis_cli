@@ -114,8 +114,7 @@ class WebuntisCli:
         """Create a time table for a teacher, klasse or room.
 
         :param reference: teacher, klasse or room object"""
-        start = datetime.datetime.now()
-        start = start.replace(day=self.start.day, month=self.start.month)
+        start = self.start.replace(day=self.start.day, month=self.start.month)
         end = start + datetime.timedelta(days=self.days)
         # If start date in current schoolyear => adjust enddate to be in
         # current year as well
