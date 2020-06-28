@@ -116,11 +116,11 @@ class WebuntisCli:
         :param reference: teacher, klasse or room object"""
         start = self.start.replace(day=self.start.day, month=self.start.month)
         end = start + datetime.timedelta(days=self.days)
-        # If start date in current schoolyear => adjust enddate to be in
-        # current year as well
+
         current_year = self.session.schoolyears().current
-        if current_year.start < start < current_year.end:
-            end = self._adjust_date_to_schoolyearend(end)
+        assert current_year.start <= start <= current_year.end, f"Start date not in current school year {start}"
+        assert current_year.start <= end <= current_year.end, f"End date not in current school year {end}"
+
         logging.debug("creating time table between %s and %s", start, end)
 
         args = dict(start=start, end=end)
@@ -150,15 +150,6 @@ class WebuntisCli:
             sub = " ".join([r.name for r in po.subjects])
             c = "(" + po.code + ")" if po.code is not None else ""
             print(s + "-" + e, k, sub, t, r, c)
-
-    def _adjust_date_to_schoolyearend(self, date: datetime.datetime):
-        current_year = self.session.schoolyears().current
-        if date < current_year.end:
-            return date
-        else:
-            logging.debug('date "%s" after schoolyear end "%s". Using end date '
-                          'of schoolyear instead.', date, current_year.end)
-            return current_year.end
 
 
 class Configuration:
