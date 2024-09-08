@@ -106,3 +106,4 @@ config.ini
 *~
 
 poetry.lock
+webuntis_cli/secrets.txt

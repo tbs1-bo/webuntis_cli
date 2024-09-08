@@ -73,3 +73,6 @@ Es können Debugausgaben aktiviert werden, indem die Umgebungsvariable
 
     $ WEBUNTIS_CLI_DEBUG=1 webuntis-cli --help
     
+
+Das Paket kann mit `poetry build` und `poetry publish -u __token -p pyp-XXX`
+veröffentlicht werden.

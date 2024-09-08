@@ -1,6 +1,7 @@
 [tool.poetry]
 name = "webuntis-cli"
-version = "0.6.5"
+# must be changed in __init__.py as well
+version = "0.6.6"
 description = "WebUntis CLI"
 authors = ["Marco Bakera <marco@bakera.de>"]
 license = "MIT"
@@ -35,7 +36,7 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.8"
 webuntis = "^0.1.11"
 
 [tool.poetry.dev-dependencies]
