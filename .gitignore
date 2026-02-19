@@ -107,3 +107,4 @@ config.ini
 
 poetry.lock
 webuntis_cli/secrets.txt
+/.DS_Store
