@@ -39,7 +39,7 @@ classifiers = [
 python = "^3.8"
 webuntis = "^0.1.11"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 pylint = "^2.11.1"
 
 [tool.poetry.scripts]
